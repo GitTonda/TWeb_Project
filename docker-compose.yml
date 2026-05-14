@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: anime-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    command: ["--wiredTigerCacheSizeGB", "1"]
+    volumes:
+      - ./docker_data/mongo:/data/db
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: anime-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432" # <-- Mapped to 5433 on your host!
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: anime_static
+    volumes:
+      - ./docker_data/postgres:/var/lib/postgresql/data

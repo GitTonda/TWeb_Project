@@ -1,41 +1,64 @@
 <div class="row mt-5">
-    <div class="col-md-8 offset-md-2">
-        <div class="card shadow-sm border-0 text-center">
-            <div class="card-body p-5">
-                <h2 class="fw-bold">{{title}}</h2>
-                <p class="text-muted mt-3">{{message}}</p>
+    <div class="col-md-10 offset-md-1">
 
-                <div class="row mt-4">
+        <div class="card shadow-sm border-0 text-center mb-4">
+            <div class="card-body p-4">
+                <h2 class="fw-bold">{{title}}</h2>
+                <p class="text-muted mt-2 mb-4">{{message}}</p>
+
+                <div class="row">
                     <div class="col-6">
-                        <div class="p-3 bg-light rounded border border-{{statusColor}}">
-                            <h6 class="text-{{statusColor}} fw-bold mb-1">Mongo Microservice</h6>
+                        <div class="p-3 bg-light rounded border border-{{mongoColor}}">
+                            <h6 class="text-{{mongoColor}} fw-bold mb-1">Mongo Microservice</h6>
                             <small class="text-muted">{{mongoStatus}}</small>
                         </div>
                     </div>
 
                     <div class="col-6">
-                        <div class="p-3 bg-light rounded border border-warning">
-                            <h6 class="text-warning fw-bold mb-1">Postgres Microservice</h6>
-                            <small class="text-muted">Pending (Port 8080)</small>
+                        <div class="p-3 bg-light rounded border border-{{postgresColor}}">
+                            <h6 class="text-{{postgresColor}} fw-bold mb-1">Postgres Microservice</h6>
+                            <small class="text-muted">{{postgresStatus}}</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{#if mongoData}}
-            <div class="card shadow-sm border-0 mt-4">
-                <div class="card-header bg-dark text-white fw-bold">
-                    Live Data Feed: MongoDB
-                </div>
-                <div class="card-body">
-                    <p><strong>Username:</strong> {{mongoData.username}}</p>
-                    <p><strong>Anime ID:</strong> <span class="badge bg-primary">{{mongoData.anime_id}}</span></p>
-                    <p><strong>Status:</strong> {{mongoData.status}}</p>
-                    <p><strong>Score:</strong> {{mongoData.score}} / 10</p>
-                </div>
+        <div class="row">
+
+            <div class="col-md-6 mb-4">
+                {{#if mongoData}}
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-success text-white fw-bold">
+                            🍃 Live Feed: MongoDB (Dynamic Data)
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><strong>Username:</strong> {{mongoData.username}}</p>
+                            <p class="mb-2"><strong>Anime ID:</strong> <span class="badge bg-success">{{mongoData.anime_id}}</span></p>
+                            <p class="mb-2"><strong>Status:</strong> {{mongoData.status}}</p>
+                            <p class="mb-0"><strong>Score:</strong> {{mongoData.score}} / 10</p>
+                        </div>
+                    </div>
+                {{/if}}
             </div>
-        {{/if}}
+
+            <div class="col-md-6 mb-4">
+                {{#if postgresData}}
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-header bg-primary text-white fw-bold">
+                            🐘 Live Feed: PostgreSQL (Static Data)
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><strong>Title:</strong> {{postgresData.title}}</p>
+                            <p class="mb-2"><strong>MAL ID:</strong> <span class="badge bg-primary">{{postgresData.mal_id}}</span></p>
+                            <p class="mb-2"><strong>Type:</strong> {{postgresData.type}}</p>
+                            <p class="mb-0"><strong>Status:</strong> {{postgresData.status}}</p>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+
+        </div>
 
     </div>
 </div>

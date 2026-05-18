@@ -6,7 +6,7 @@ exports.test_ratings = async (req, res) =>
     {
         const sample_rating = await rating.findOne();
         if (!sample_rating) return res.status(404).json({ success: false, message: "Failed to find rating" });
-        res.json({ success: true, service: "Mongo Microservice", data: sample_rating });
+        res.json({ success: true, message: "Successfully retrieved one rating" });
     }
     catch (error)
     {

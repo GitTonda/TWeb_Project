@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use('/', require('./routes/index_routes'));
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');

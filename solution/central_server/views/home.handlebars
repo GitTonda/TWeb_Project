@@ -1,0 +1,41 @@
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow-sm border-0 text-center">
+            <div class="card-body p-5">
+                <h2 class="fw-bold">{{title}}</h2>
+                <p class="text-muted mt-3">{{message}}</p>
+
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <div class="p-3 bg-light rounded border border-{{statusColor}}">
+                            <h6 class="text-{{statusColor}} fw-bold mb-1">Mongo Microservice</h6>
+                            <small class="text-muted">{{mongoStatus}}</small>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="p-3 bg-light rounded border border-warning">
+                            <h6 class="text-warning fw-bold mb-1">Postgres Microservice</h6>
+                            <small class="text-muted">Pending (Port 8080)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{#if mongoData}}
+            <div class="card shadow-sm border-0 mt-4">
+                <div class="card-header bg-dark text-white fw-bold">
+                    Live Data Feed: MongoDB
+                </div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{mongoData.username}}</p>
+                    <p><strong>Anime ID:</strong> <span class="badge bg-primary">{{mongoData.anime_id}}</span></p>
+                    <p><strong>Status:</strong> {{mongoData.status}}</p>
+                    <p><strong>Score:</strong> {{mongoData.score}} / 10</p>
+                </div>
+            </div>
+        {{/if}}
+
+    </div>
+</div>

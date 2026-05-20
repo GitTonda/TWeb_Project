@@ -43,3 +43,29 @@ exports.render_home = async (req, res) => {
         postgresStatus, postgresColor, postgresData
     });
 };
+
+exports.searchAnime = async (req, res) => {
+    const query = req.query.q;
+    let results = [];
+    let errorMsg = null;
+
+    if (query) {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/search?q=${query}`);
+
+            if (response.data.success) {
+                results = response.data.data;
+            }
+        } catch (error) {
+            console.error("❌ Search failed:", error.message);
+            errorMsg = "Could not reach the PostgreSQL database.";
+        }
+    }
+
+    res.render('search_results', {
+        title: 'Fan Hub - Anime Search',
+        query: query,
+        results: results,
+        errorMsg: errorMsg
+    });
+};

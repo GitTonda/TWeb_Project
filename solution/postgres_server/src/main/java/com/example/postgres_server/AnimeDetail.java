@@ -14,6 +14,7 @@ public class AnimeDetail
     private String type;
     private String status;
     private Double score;
+    private String image_url;
 
     public Long getMal_id() { return mal_id; }
     public void setMal_id(Long mal_id) { this.mal_id = mal_id; }
@@ -29,4 +30,7 @@ public class AnimeDetail
 
     public Double getScore() { return score; }
     public void setScore(Double score) { this.score = score; }
+
+    public String getImage_url() { return image_url; }
+    public void setImage_url() { this.image_url = image_url; }
 }

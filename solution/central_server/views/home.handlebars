@@ -12,71 +12,24 @@
     </div>
 </div>
 
-{{#if errorMsg}}
-    <div class="alert alert-warning text-center">{{errorMsg}}</div>{{/if}}
-
 <h4 class="fw-bold mb-3 border-bottom pb-2">Platform Overview</h4>
 <div class="row mb-5">
     <div class="col-md-4 mb-3">
         <div class="card shadow-sm border-0 bg-primary text-white h-100 text-center py-4">
             <h5 class="card-title text-uppercase mb-0">Total Anime</h5>
-            <h2 class="display-6 fw-bold mt-2">{{stats.totalAnime}}</h2>
+            <h2 class="display-6 fw-bold mt-2">{{stats.total_anime}}</h2>
         </div>
     </div>
     <div class="col-md-4 mb-3">
         <div class="card shadow-sm border-0 bg-success text-white h-100 text-center py-4">
             <h5 class="card-title text-uppercase mb-0">Registered Users</h5>
-            <h2 class="display-6 fw-bold mt-2">{{stats.totalUsers}}</h2>
+            <h2 class="display-6 fw-bold mt-2">{{stats.total_users}}</h2>
         </div>
     </div>
     <div class="col-md-4 mb-3">
         <div class="card shadow-sm border-0 bg-info text-white h-100 text-center py-4">
             <h5 class="card-title text-uppercase mb-0">Total Ratings</h5>
-            <h2 class="display-6 fw-bold mt-2">{{stats.totalRatings}}</h2>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-8 mb-4">
-        <h4 class="fw-bold mb-3 border-bottom pb-2">Top 10 Highest Rated Anime</h4>
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-0">
-                <table class="table table-hover table-striped mb-0">
-                    <thead class="table-dark">
-                    <tr>
-                        <th>Rank</th>
-                        <th>Title</th>
-                        <th>Type</th>
-                        <th>Score</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#if topAnime.length}}
-                        {{#each topAnime}}
-                            <tr>
-                                <td>#{{@index}}</td> <td class="fw-bold">{{this.title}}</td>
-                                <td><span class="badge bg-secondary">{{this.type}}</span></td>
-                                <td class="text-success fw-bold">{{this.score}}</td>
-                            </tr>
-                        {{/each}}
-                    {{else}}
-                        <tr>
-                            <td colspan="4" class="text-center text-muted py-4">
-                                <em>Awaiting connection to PostgreSQL database...</em>
-                            </td>
-                        </tr>
-                    {{/if}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4 mb-4">
-        <h4 class="fw-bold mb-3 border-bottom pb-2">Trending Genres</h4>
-        <div class="card shadow-sm border-0 p-4 text-center text-muted h-100">
-            <p class="mb-0"><em>Connect to PostgreSQL to load genre distribution analytics.</em></p>
+            <h2 class="display-6 fw-bold mt-2">{{stats.total_ratings}}</h2>
         </div>
     </div>
 </div>

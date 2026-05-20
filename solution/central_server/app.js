@@ -1,12 +1,15 @@
-const express = require('express');
-const cors = require('cors');
+// IMPORTS
 const path = require('path');
-const swagger_ui = require('swagger-ui-express');
-const swagger_js_doc = require('swagger-jsdoc');
-const {engine} = require('express-handlebars');
+const express = require('express');
+const express_hb = require("express-handlebars");
 
+const cors = require('cors');
+const swagger_js_doc = require('swagger-jsdoc');
+
+const swagger_ui = require('swagger-ui-express');
 const app = express();
 
+// SWAGGER setup
 const swagger_options = {
     definition: {
         openapi: '3.0.0',
@@ -19,17 +22,27 @@ const swagger_options = {
     },
     apis: [path.join(__dirname, './routes/*.js')],
 };
-
 const swagger_docs = swagger_js_doc(swagger_options);
 app.use('/api-docs', swagger_ui.serve, swagger_ui.setup(swagger_docs));
 
+// APP setup
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/', require('./routes/index_routes'));
+app.use(express.urlencoded({ extended: true }));
 
-app.engine('handlebars', engine());
+// HANDLEBARS setup
+app.engine('handlebars', express_hb.engine({
+    helpers: {
+        limit: function (arr, limit)
+        {
+            if (!Array.isArray(arr)) return [];
+            return arr.slice(0, limit);
+        }
+    }
+}));
+
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 

@@ -64,4 +64,25 @@ public class ApiController
         }
         return response;
     }
+
+    @Operation(summary = "Get Top 10 Anime", description = "Fetches the top 10 highest-rated anime from the static Postgres database.")
+    @ApiResponse(responseCode = "200", description = "Successfully retrieved the leaderboard")
+    @GetMapping("/top-10-anime")
+    public Map<String, Object> getTop10Anime()
+    {
+        Map<String, Object> response = new HashMap<>();
+        try
+        {
+            List<AnimeDetail> topAnime = animeRepository.findTop10ByScoreIsNotNullOrderByScoreDesc();
+
+            response.put("success", true);
+            response.put("data", topAnime);
+        }
+        catch (Exception e)
+        {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+        }
+        return response;
+    }
 }

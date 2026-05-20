@@ -16,4 +16,6 @@ public interface AnimeRepository extends JpaRepository<AnimeDetail, Long>
                     "WHERE regexp_replace(LOWER(title), '[^a-z0-9]', '', 'g') " +
                     "LIKE LOWER(CONCAT('%', :query, '%'))", nativeQuery = true)
     List<AnimeDetail> findByFlexibleTitle(@Param("query") String query);
+
+    List<AnimeDetail> findTop10ByScoreIsNotNullOrderByScoreDesc();
 }

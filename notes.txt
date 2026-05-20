@@ -1,0 +1,17 @@
+- Database Setup
+////
+
+- Central Server
+initialized with
+[
+    npm init -y
+    npm install express axios cors dotenv
+    npm install --save-dev nodemon
+]
+
+- Mongo Server
+[
+    npm init -y
+    npm install express mongoose cors dotenv
+    npm install --save-dev nodemon    
+]

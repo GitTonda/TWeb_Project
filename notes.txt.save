@@ -1,0 +1,21 @@
+- Database Setup
+////
+
+- Central Server
+initialized with
+[
+    npm init -y
+    npm install express axios cors dotenv
+    npm install --save-dev nodemon
+]
+
+- Mongo Server
+[
+    npm init -y
+    npm install express mongoose cors dotenv
+    npm install --save-dev nodemon    
+]
+
+- Postgres Server
+created trough intellij
+Spring Boot with imports [Spring WEB, Spring Data JPA, PostgeSQL Data]
